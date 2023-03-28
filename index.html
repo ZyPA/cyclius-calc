@@ -4,67 +4,99 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cyclius Calc</title>
-    <link rel="stylesheet" href="css/index.min.css" />
+    <title>JS Clock</title>
+    <link rel="icon" href="favicon.png" type="image">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo&display=swap"
+      rel="stylesheet" />
+    <link rel="stylesheet" href="css/main.min.css" />
   </head>
   <body>
-    <table>
-      <tr class="heading">
-        <th class="slot">Slot</th>
-        <th class="value">Value</th>
-      </tr>
-      <tr class="row diamond">
-        <td class="slot">
-          <img
-            src="img/diamond.png"
-            alt="Diamond icon"
-            class="slot-icon" />Diamond
-        </td>
-        <td class="value"></td>
-        <td class="bis">
-          <svg width="100%" height="100%" viewBox="0 0 58 56">
-            <g transform="matrix(1,0,0,1,0,-1.28203)">
-              <g transform="matrix(1.09134,0,0,1.09134,-2.64893,-0.0191853)">
-                <path
-                  d="M26.6,2.837C26.984,1.846 27.937,1.192 29,1.192C30.063,1.192 31.016,1.846 31.4,2.837L37.172,17.752L53.141,18.633C54.202,18.691 55.118,19.396 55.447,20.407C55.775,21.418 55.448,22.527 54.624,23.198L42.223,33.297L46.32,48.756C46.592,49.783 46.205,50.872 45.345,51.497C44.485,52.122 43.33,52.153 42.437,51.577L29,42.904L15.563,51.577C14.67,52.153 13.515,52.122 12.655,51.497C11.795,50.872 11.408,49.783 11.68,48.756L15.777,33.297L3.376,23.198C2.552,22.527 2.225,21.418 2.553,20.407C2.882,19.396 3.798,18.691 4.859,18.633L20.828,17.752L26.6,2.837Z" />
-              </g>
-            </g>
-          </svg>
-        </td>
-      </tr>
-      <tr class="row ruby">
-        <td class="slot">
-          <img src="img/ruby.png" alt="Ruby icon" class="slot-icon" />Ruby
-        </td>
-        <td class="value"></td>
-        <td class="bis">
-          <svg width="100%" height="100%" viewBox="0 0 58 56">
-            <g transform="matrix(1,0,0,1,0,-1.28203)">
-              <g transform="matrix(1.09134,0,0,1.09134,-2.64893,-0.0191853)">
-                <path
-                  d="M26.6,2.837C26.984,1.846 27.937,1.192 29,1.192C30.063,1.192 31.016,1.846 31.4,2.837L37.172,17.752L53.141,18.633C54.202,18.691 55.118,19.396 55.447,20.407C55.775,21.418 55.448,22.527 54.624,23.198L42.223,33.297L46.32,48.756C46.592,49.783 46.205,50.872 45.345,51.497C44.485,52.122 43.33,52.153 42.437,51.577L29,42.904L15.563,51.577C14.67,52.153 13.515,52.122 12.655,51.497C11.795,50.872 11.408,49.783 11.68,48.756L15.777,33.297L3.376,23.198C2.552,22.527 2.225,21.418 2.553,20.407C2.882,19.396 3.798,18.691 4.859,18.633L20.828,17.752L26.6,2.837Z" />
-              </g>
-            </g>
-          </svg>
-        </td>
-      </tr>
-      <tr class="row jade">
-        <td class="slot">
-          <img src="img/jade.png" alt="Jade icon" class="slot-icon" />Jade
-        </td>
-        <td class="value"></td>
-        <td class="bis">
-          <svg width="100%" height="100%" viewBox="0 0 58 56">
-            <g transform="matrix(1,0,0,1,0,-1.28203)">
-              <g transform="matrix(1.09134,0,0,1.09134,-2.64893,-0.0191853)">
-                <path
-                  d="M26.6,2.837C26.984,1.846 27.937,1.192 29,1.192C30.063,1.192 31.016,1.846 31.4,2.837L37.172,17.752L53.141,18.633C54.202,18.691 55.118,19.396 55.447,20.407C55.775,21.418 55.448,22.527 54.624,23.198L42.223,33.297L46.32,48.756C46.592,49.783 46.205,50.872 45.345,51.497C44.485,52.122 43.33,52.153 42.437,51.577L29,42.904L15.563,51.577C14.67,52.153 13.515,52.122 12.655,51.497C11.795,50.872 11.408,49.783 11.68,48.756L15.777,33.297L3.376,23.198C2.552,22.527 2.225,21.418 2.553,20.407C2.882,19.396 3.798,18.691 4.859,18.633L20.828,17.752L26.6,2.837Z" />
-              </g>
-            </g>
-          </svg>
-        </td>
-      </tr>
-    </table>
-    <script src="js/index.js"></script>
+    <div class="clock">
+      <div class="clock-bars">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar bar__bold"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar bar__bold"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar bar__bold"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar bar__bold"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar bar__bold"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar bar__bold"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar bar__bold"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar bar__bold"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar bar__bold"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar bar__bold"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar bar__bold"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar bar__bold"></div>
+      </div>
+      <div class="clock-numbers">
+        <div class="number">1</div>
+        <div class="number">2</div>
+        <div class="number">3</div>
+        <div class="number">4</div>
+        <div class="number">5</div>
+        <div class="number">6</div>
+        <div class="number">7</div>
+        <div class="number">8</div>
+        <div class="number">9</div>
+        <div class="number">10</div>
+        <div class="number">11</div>
+        <div class="number">12</div>
+      </div>
+      <div class="clock-hands">
+        <div class="hour-hand hand"></div>
+        <div class="minute-hand hand"></div>
+        <div class="second-hand hand"></div>
+      </div>
+    </div>
+    <script src="js/main.js"></script>
   </body>
 </html>
