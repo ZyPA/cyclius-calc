@@ -33,9 +33,7 @@ body {
 
 .slots {
   border-block: 0.5rem solid var(--clr-blue);
-  min-width: 40rem;
-  width: 50vw;
-  max-width: 60rem;
+  width: 768px;
 }
 
 .slot {
@@ -60,8 +58,8 @@ body {
 
   font: inherit;
   color: currentColor;
-  width: 75%;
-  aspect-ratio: 1 / 1;
+  width: 1.8rem;
+  height: 1.8rem;
   border: 0.3rem solid currentColor;
   border-radius: 50%;
 
@@ -72,7 +70,7 @@ body {
   place-content: center;
 
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     inset: 20%;
     border-radius: inherit;
@@ -92,7 +90,7 @@ body {
 }
 
 .slot-name {
-  color: var(--clr-gray)
+  color: var(--clr-gray);
 }
 
 .slot:has(.slot-isActive:checked) .slot-name {
@@ -129,6 +127,14 @@ body {
   width: 75%;
   &[data-is-best='false'] {
     visibility: hidden;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .slots {
+    min-width: initial;
+    width: 100vw;
+    max-width: initial;
   }
 }
 
