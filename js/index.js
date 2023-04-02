@@ -85,12 +85,10 @@ function update() {
     var multNext = getMult(t + 1 / 1000, key);
     item.e.setAttribute('data-increasing', mult < multNext ? 'true' : 'false');
     if (currBest == key) {
-      document.querySelectorAll('[data-is-best="true"]').forEach((item) => {
-        if (!item.parentNode.classList.contains(key)) {
-          item.setAttribute('data-is-best', 'false');
-        }
-      });
       item.bestE.setAttribute('data-is-best', 'true');
+    }
+    else {
+      item.bestE.setAttribute('data-is-best', 'false');
     }
     if (item.e.innerHTML != beautify(mult)) item.e.innerHTML = beautify(mult);
     if (mult >= 0) {
