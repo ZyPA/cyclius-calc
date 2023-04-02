@@ -16,8 +16,8 @@ const slots = {
   },
 };
 
-var slider = document.getElementById("timeOverride");
-var sliderToggle = document.getElementById("timeOverrideToggle");
+var slider = document.getElementById('timeOverride');
+var sliderToggle = document.getElementById('timeOverrideToggle');
 
 let activeSlot = 'none';
 document.querySelectorAll('.slot-isActive').forEach((item) => {
@@ -61,23 +61,24 @@ function getBest(time) {
   rubyAvg = avg(rubyAvg);
   jadeAvg = avg(jadeAvg);
 
-  if (jadeAvg >= rubyAvg && jadeAvg >= diaAvg && jade >= current && jade >= 0)
+  if (jadeAvg >= rubyAvg && jadeAvg >= diaAvg && jadeAvg >= 0 && jade >= current && jade >= 0)
     return 'jade';
   else if (
     rubyAvg >= jadeAvg &&
     rubyAvg >= diaAvg &&
+    rubyAvg >= 0 &&
     ruby >= current &&
     ruby >= 0
   )
     return 'ruby';
-  else if (diaAvg >= jadeAvg && diaAvg >= rubyAvg && dia >= current && dia >= 0)
+  else if (diaAvg >= jadeAvg && diaAvg >= rubyAvg && diaAvg >= 0 && dia >= current && dia >= 0)
     return 'diamond';
   else if (current >= 0) return activeSlot;
   else return 'none';
 }
 
 function update() {
-  if (sliderToggle.checked == true) var t = parseFloat(slider.value)
+  if (sliderToggle.checked == true) var t = parseFloat(slider.value);
   else var t = new Date().getTime() / 1000 / 60 / 60;
   var currBest = getBest(t);
   for ([key, item] of Object.entries(slots)) {
@@ -86,8 +87,7 @@ function update() {
     item.e.setAttribute('data-increasing', mult < multNext ? 'true' : 'false');
     if (currBest == key) {
       item.bestE.setAttribute('data-is-best', 'true');
-    }
-    else {
+    } else {
       item.bestE.setAttribute('data-is-best', 'false');
     }
     if (item.e.innerHTML != beautify(mult)) item.e.innerHTML = beautify(mult);
