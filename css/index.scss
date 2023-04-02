@@ -31,7 +31,6 @@ body {
   place-items: center;
 }
 
-
 .timeOverride {
   display: grid;
   grid-template-rows: 1fr auto;
@@ -40,11 +39,31 @@ body {
   margin-bottom: 1rem;
 }
 
+#timeOverrideToggleLabel {
+  font-size: 2rem;
+  justify-self: center;
+  align-self: center;
+}
+
+#timeOverrideToggle:checked ~ #timeOverrideToggleLabel {
+  display: none;
+}
+
+.timeOverride:has(#timeOverrideToggle:checked) :is(#timeOverride, #overrideTime) {
+  display: block;
+  visibility: visible;
+}
+
+#timeOverride {
+  display: none;
+}
+
 #overrideTime {
   grid-column: 1 / -1;
   text-align: center;
   font-size: 3rem;
   margin: 0;
+  visibility: hidden
 }
 
 .slots {
