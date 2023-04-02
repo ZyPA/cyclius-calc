@@ -31,6 +31,22 @@ body {
   place-items: center;
 }
 
+
+.timeOverride {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+#overrideTime {
+  grid-column: 1 / -1;
+  text-align: center;
+  font-size: 3rem;
+  margin: 0;
+}
+
 .slots {
   border-block: 0.5rem solid var(--clr-blue);
   width: 768px;

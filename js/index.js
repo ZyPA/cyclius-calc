@@ -16,6 +16,9 @@ const slots = {
   },
 };
 
+var slider = document.getElementById("timeOverride");
+var sliderToggle = document.getElementById("timeOverrideToggle");
+
 let activeSlot = 'none';
 document.querySelectorAll('.slot-isActive').forEach((item) => {
   item.addEventListener('click', () => {
@@ -74,7 +77,8 @@ function getBest(time) {
 }
 
 function update() {
-  var t = new Date().getTime() / 1000 / 60 / 60;
+  if (sliderToggle.checked == true) var t = parseFloat(slider.value)
+  else var t = new Date().getTime() / 1000 / 60 / 60;
   var currBest = getBest(t);
   for ([key, item] of Object.entries(slots)) {
     var mult = getMult(t, key);
