@@ -10,7 +10,7 @@ slider.step = (1 / 60).toFixed(15);
 function handleSlider() {
   var sliderPercent = (slider.value / slider.max) * 100;
 
-  slider.style.background = `linear-gradient(to right, var(--clr-form) ${sliderPercent}%, #ccc ${sliderPercent}%)`
+  slider.style.background = `linear-gradient(to right, var(--clr-form) ${sliderPercent}%, var(--bg-clr) ${sliderPercent}%)`
 
 }
 

@@ -99,16 +99,19 @@ body {
 }
 
 #slider {
+  --bg-clr: hsl(0, 0%, 90%);
+
   display: none;
 
   position: relative;
   appearance: none;
   height: 0.6rem;
-  background-color: #ccc;
+  background-color: var(--bg-clr);
   border-radius: 0.6rem;
 
   &::-webkit-slider-thumb {
     appearance: none;
+    box-sizing: border-box;
     display: block;
     height: 1.6rem;
     width: 1.6rem;
@@ -119,6 +122,7 @@ body {
 
   &::-moz-range-thumb {
     appearance: none;
+    box-sizing: border-box;
     display: block;
     height: 1.6rem;
     width: 1.6rem;
@@ -129,12 +133,28 @@ body {
 
   &::-ms-thumb {
     appearance: none;
+    box-sizing: border-box;
     display: block;
     height: 1.6rem;
     width: 1.6rem;
     border-radius: 50%;
     background: var(--clr-form);
     cursor: pointer;
+  }
+
+  &:active::-webkit-slider-thumb {
+    background-color: var(--bg-clr);
+    border: .3rem solid var(--clr-form)
+  }
+
+  &:active::-moz-range-thumb {
+    background-color: var(--bg-clr);
+    border: .3rem solid var(--clr-form)
+  }
+
+  &:active::-ms-thumb {
+    background-color: var(--bg-clr);
+    border: .3rem solid var(--clr-form)
   }
 }
 
