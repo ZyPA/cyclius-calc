@@ -16,8 +16,8 @@ const slots = {
   },
 };
 
-var slider = document.getElementById('timeOverride');
-var sliderToggle = document.getElementById('timeOverrideToggle');
+var slider = document.getElementById('slider');
+var sliderToggle = document.getElementById('sliderToggle');
 
 let activeSlot = 'none';
 document.querySelectorAll('.slot-isActive').forEach((item) => {

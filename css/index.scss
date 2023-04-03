@@ -3,6 +3,7 @@
   --clr-green: #80ff80;
   --clr-blue: #8080ff;
   --clr-gray: #808080;
+  --clr-form: var(--clr-blue);
 }
 
 .clr {
@@ -33,37 +34,115 @@ body {
 
 .timeOverride {
   display: grid;
-  grid-template-rows: 1fr auto;
-  grid-template-columns: auto 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1.6rem 1fr 1.6rem;
   gap: 1rem;
   margin-bottom: 1rem;
+  align-items: center;
+  justify-content: center;
 }
 
-#timeOverrideToggleLabel {
+#sliderToggle {
+  appearance: none;
+  margin: 0;
+  color: var(--clr-form);
+  background-color: transparent;
+  font-size: 1.6rem;
+  width: 1em;
+  height: 1em;
+  border: 0.25rem solid currentColor;
+  border-radius: 0.15rem;
+  cursor: pointer;
+  align-self: inherit;
+  justify-self: inherit;
+
+  display: grid;
+  place-content: center;
+  position: relative;
+
+  transition: background-color 128ms ease-in;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0.1em;
+    background-color: white;
+
+    transition: opacity 128ms ease-in;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+    rotate: 5deg;
+    opacity: 0;
+  }
+
+  &:checked {
+    background-color: currentColor;
+    &::before {
+      opacity: 1;
+    }
+  }
+}
+
+#sliderToggleLabel {
   font-size: 2rem;
   justify-self: center;
   align-self: center;
+  cursor: pointer;
 }
 
-#timeOverrideToggle:checked ~ #timeOverrideToggleLabel {
+#sliderToggle:checked ~ #sliderToggleLabel {
   display: none;
 }
 
-.timeOverride:has(#timeOverrideToggle:checked) :is(#timeOverride, #overrideTime) {
+#sliderToggle:checked ~ #slider {
   display: block;
   visibility: visible;
 }
 
-#timeOverride {
+#slider {
   display: none;
+
+  position: relative;
+  appearance: none;
+  height: 0.6rem;
+  background-color: #ccc;
+  border-radius: 0.6rem;
+
+  &::-webkit-slider-thumb {
+    appearance: none;
+    display: block;
+    height: 1.6rem;
+    width: 1.6rem;
+    border-radius: 50%;
+    background: var(--clr-form);
+    cursor: pointer;
+  }
+
+  &::-moz-range-thumb {
+    appearance: none;
+    display: block;
+    height: 1.6rem;
+    width: 1.6rem;
+    border-radius: 50%;
+    background: var(--clr-form);
+    cursor: pointer;
+  }
+
+  &::-ms-thumb {
+    appearance: none;
+    display: block;
+    height: 1.6rem;
+    width: 1.6rem;
+    border-radius: 50%;
+    background: var(--clr-form);
+    cursor: pointer;
+  }
 }
 
-#overrideTime {
+#clock {
   grid-column: 1 / -1;
   text-align: center;
   font-size: 3rem;
   margin: 0;
-  visibility: hidden
 }
 
 .slots {
@@ -104,18 +183,23 @@ body {
   justify-self: center;
   place-content: center;
 
+  transition: border-color 128ms ease-in-out;
+
   &::before {
     content: '';
     position: absolute;
     inset: 20%;
     border-radius: inherit;
     transform: scale(0);
-    transition: 120ms transform ease-in-out;
-    background-color: var(--clr-blue);
+    transition: 128ms transform ease-in-out;
+    background-color: var(--clr-form);
   }
 
-  &:checked::before {
-    transform: scale(1);
+  &:checked {
+    border-color: var(--clr-form);
+    &::before {
+      transform: scale(1);
+    }
   }
 
   &:focus-visible {
@@ -126,6 +210,7 @@ body {
 
 .slot-name {
   color: var(--clr-gray);
+  transition: color 128ms ease-in-out;
 }
 
 .slot:has(.slot-isActive:checked) .slot-name {
@@ -174,7 +259,8 @@ body {
 }
 
 @media (prefers-contrast: more) {
-  .slot-isActive::before {
+  .slot-isActive::before,
+  #sliderToggle::before {
     background-color: canvasText;
   }
 }
