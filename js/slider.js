@@ -6,8 +6,8 @@ const leadingZero = (n) => (n < 10 ? '0' + n : n);
 function handleTimer(value) {
   var hh = Math.floor(value);
   var mm = Math.floor((value - hh) * 60);
-  var ss = Math.floor(((value - hh) * 60 - mm) * 60);
-  return `${leadingZero(hh)}:${leadingZero(mm)}:${leadingZero(ss)}`;
+  // var ss = Math.floor(((value - hh) * 60 - mm) * 60);
+  return `${leadingZero(hh)}:${leadingZero(mm)}`;
 }
 
 output.innerHTML = handleTimer(slider.value);
