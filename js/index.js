@@ -61,7 +61,13 @@ function getBest(time) {
   rubyAvg = avg(rubyAvg);
   jadeAvg = avg(jadeAvg);
 
-  if (jadeAvg >= rubyAvg && jadeAvg >= diaAvg && jadeAvg >= 0 && jade >= current && jade >= 0)
+  if (
+    jadeAvg >= rubyAvg &&
+    jadeAvg >= diaAvg &&
+    jadeAvg >= 0 &&
+    jade >= current &&
+    jade >= 0
+  )
     return 'jade';
   else if (
     rubyAvg >= jadeAvg &&
@@ -71,15 +77,22 @@ function getBest(time) {
     ruby >= 0
   )
     return 'ruby';
-  else if (diaAvg >= jadeAvg && diaAvg >= rubyAvg && diaAvg >= 0 && dia >= current && dia >= 0)
+  else if (
+    diaAvg >= jadeAvg &&
+    diaAvg >= rubyAvg &&
+    diaAvg >= 0 &&
+    dia >= current &&
+    dia >= 0
+  )
     return 'diamond';
   else if (current >= 0) return activeSlot;
   else return 'none';
 }
 
 function update() {
-  if (sliderToggle.checked == true) var t = parseFloat(slider.value);
-  else var t = new Date().getTime() / 1000 / 60 / 60;
+  var d = new Date();
+  if (sliderToggle.checked == true) var t = parseFloat(slider.value) + d.getTimezoneOffset() / 60;
+  else var t = d.getTime() / 1000 / 60 / 60;
   var currBest = getBest(t);
   for ([key, item] of Object.entries(slots)) {
     var mult = getMult(t, key);

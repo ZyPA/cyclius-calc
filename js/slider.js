@@ -1,14 +1,17 @@
-var slider = document.getElementById("timeOverride");
-var output = document.getElementById("overrideTime");
+var slider = document.getElementById('timeOverride');
+var output = document.getElementById('overrideTime');
+
+const leadingZero = (n) => (n < 10 ? '0' + n : n);
 
 function handleTimer(value) {
-  var hour = Math.floor(value) < 10 ? "0" + Math.floor(value) : Math.floor(value);
-  var min = Math.floor((value - hour)*60) < 10 ? "0" + Math.floor((value - hour)*60) : Math.floor((value - hour)*60);
-  return `${hour}:${min} UTC`
+  var hh = Math.floor(value);
+  var mm = Math.floor((value - hh) * 60);
+  var ss = Math.floor(((value - hh) * 60 - mm) * 60);
+  return `${leadingZero(hh)}:${leadingZero(mm)}:${leadingZero(ss)}`;
 }
 
 output.innerHTML = handleTimer(slider.value);
 
-slider.oninput = function() {
+slider.oninput = function () {
   output.innerHTML = handleTimer(this.value);
-}
+};
