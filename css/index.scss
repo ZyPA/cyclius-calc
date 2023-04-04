@@ -45,7 +45,6 @@ body {
   grid-template-rows: 1fr 1fr;
   grid-template-columns: 2.4rem 1fr 2.4rem;
   gap: 1.5rem;
-  align-self: flex-end;
   place-items: center;
   width: 100%;
   padding-inline: 1.5rem;
@@ -280,8 +279,6 @@ body {
 }
 
 .unsocket-btn {
-  margin-top: 1rem;
-  align-self: flex-start;
   box-sizing: border-box;
   font: inherit;
   font-size: 2rem;
