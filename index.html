@@ -10,11 +10,11 @@
   </head>
   <body>
     <div class="container">
-      <div class="timeOverride">
+      <div class="slider-wrapper">
         <h1 id="clock"></h1>
         <input name="sliderToggle" type="checkbox" id="sliderToggle">
         <label id="sliderToggleLabel" for="sliderToggle">Override time for testing</label>
-        <input type="range" min="0" max="24" value="12" step="0.016666666667" id="slider">
+        <input type="range" min="0" max="24" id="slider">
       </div>
       <div class="slots">
         <div class="slot diamond">
@@ -38,7 +38,7 @@
             type="radio"
             name="active-slot"
             id="ruby" />
-          <img src="img/ruby.webp" alt="diamond icon" class="slot-icon" />
+          <img src="img/ruby.webp" alt="ruby icon" class="slot-icon" />
           <span class="slot-name">Ruby</span>
           <span class="slot-value"></span>
           <img
@@ -53,7 +53,7 @@
             type="radio"
             name="active-slot"
             id="jade" />
-          <img src="img/jade.webp" alt="diamond icon" class="slot-icon" />
+          <img src="img/jade.webp" alt="jade icon" class="slot-icon" />
           <span class="slot-name">Jade</span>
           <span class="slot-value"></span>
           <img
@@ -63,6 +63,7 @@
             alt="star icon" />
         </div>
       </div>
+      <button class="unsocket-btn">Unsocket</button>
     </div>
     <script src="js/index.js"></script>
     <script src="js/slider.js"></script>

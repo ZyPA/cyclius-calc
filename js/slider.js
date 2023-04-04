@@ -9,9 +9,8 @@ slider.step = (1 / 60).toFixed(15);
 
 function handleSlider() {
   var sliderPercent = (slider.value / slider.max) * 100;
-
-  slider.style.background = `linear-gradient(to right, var(--clr-form) ${sliderPercent}%, var(--bg-clr) ${sliderPercent}%)`
-
+  var bg = `linear-gradient(to right, var(--clr-form) ${sliderPercent}%, var(--bg-clr) ${sliderPercent}%)`;
+  if (slider.style.background != bg) slider.style.background = bg;
 }
 
 function handleClock() {
@@ -27,7 +26,7 @@ function handleClock() {
   } else {
     slider.value = d.getHours() + d.getMinutes() / 60;
   }
-  handleSlider()
+  handleSlider();
 
   var time = d.toLocaleTimeString([], {
     hour: '2-digit',

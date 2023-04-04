@@ -2,7 +2,7 @@
   --clr-red: #ff8080;
   --clr-green: #80ff80;
   --clr-blue: #8080ff;
-  --clr-gray: #808080;
+  --clr-gray: hsl(0, 0%, 75%);
   --clr-form: var(--clr-blue);
 }
 
@@ -32,14 +32,22 @@ body {
   place-items: center;
 }
 
-.timeOverride {
+.container {
+  display: grid;
+  grid-template-rows: .5fr 1fr .5fr;
+  place-items: center;
+  gap: 1rem;
+}
+
+.slider-wrapper {
+  box-sizing: border-box;
   display: grid;
   grid-template-rows: 1fr 1fr;
   grid-template-columns: 2.4rem 1fr 2.4rem;
   gap: 1.5rem;
-  margin-bottom: 1rem;
-  align-items: center;
-  justify-items: center;
+  align-self: flex-end;
+  place-items: center;
+  width: 100%;
   padding-inline: 1.5rem;
 }
 
@@ -54,8 +62,7 @@ body {
   border: 0.25rem solid currentColor;
   border-radius: 0.15rem;
   cursor: pointer;
-  align-self: inherit;
-  justify-self: inherit;
+  place-content: inherit;
 
   display: grid;
   place-content: center;
@@ -146,17 +153,17 @@ body {
 
   &:active::-webkit-slider-thumb {
     background-color: var(--bg-clr);
-    border: .3rem solid var(--clr-form)
+    border: 0.3rem solid var(--clr-form);
   }
 
   &:active::-moz-range-thumb {
     background-color: var(--bg-clr);
-    border: .3rem solid var(--clr-form)
+    border: 0.3rem solid var(--clr-form);
   }
 
   &:active::-ms-thumb {
     background-color: var(--bg-clr);
-    border: .3rem solid var(--clr-form)
+    border: 0.3rem solid var(--clr-form);
   }
 }
 
@@ -235,7 +242,7 @@ body {
   transition: color 128ms ease-in-out;
 }
 
-.slot:has(.slot-isActive:checked) .slot-name {
+.slot-isActive:checked ~ .slot-name {
   color: white;
 }
 
@@ -272,11 +279,39 @@ body {
   }
 }
 
+.unsocket-btn {
+  margin-top: 1rem;
+  align-self: flex-start;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #121314;
+  background: var(--clr-form);
+  padding: 0.5rem 1.5rem;
+  border: 0.33rem solid var(--clr-form);
+  border-radius: 0.33rem;
+  cursor: pointer;
+  transition: filter 128ms ease, width 128ms ease;
+  width: 50%;
+
+  &:hover,
+  &:focus-visible {
+    filter: brightness(75%);
+  }
+  &:active {
+    translate: 0 0.1rem;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .slots {
     min-width: initial;
     width: 100vw;
     max-width: initial;
+  }
+  .unsocket-btn {
+    width: 100%;
   }
 }
 

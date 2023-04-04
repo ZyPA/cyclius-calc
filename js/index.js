@@ -18,15 +18,17 @@ const slots = {
 
 var slider = document.getElementById('slider');
 var sliderToggle = document.getElementById('sliderToggle');
-
-let activeSlot = 'none';
-document.querySelectorAll('.slot-isActive').forEach((item) => {
-  item.addEventListener('click', () => {
-    activeSlot = document.querySelector('.slot-isActive:checked').id;
-  });
+var unsocketBtn = document.querySelector('.unsocket-btn');
+unsocketBtn.addEventListener('click', () => {
+  if (document.querySelector('.slot-isActive:checked') != undefined)
+    document.querySelector('.slot-isActive:checked').checked = false;
 });
 
 const avg = (arr) => arr.reduce((acc, curr) => acc + curr) / arr.length;
+const getActiveSlot = () =>
+  document.querySelector('.slot-isActive:checked') != undefined
+    ? document.querySelector('.slot-isActive:checked').id
+    : 'none';
 
 function beautify(num) {
   var _num = Math.abs(num).toFixed(2);
@@ -46,7 +48,7 @@ function getBest(time) {
   var diaAvg = [],
     rubyAvg = [],
     jadeAvg = [];
-  const current = getMult(time, activeSlot),
+  const current = getMult(time, getActiveSlot()),
     dia = getMult(time, 'diamond'),
     ruby = getMult(time, 'ruby'),
     jade = getMult(time, 'jade');
@@ -85,13 +87,14 @@ function getBest(time) {
     dia >= 0
   )
     return 'diamond';
-  else if (current >= 0) return activeSlot;
+  else if (current >= 0) return getActiveSlot();
   else return 'none';
 }
 
 function update() {
   var d = new Date();
-  if (sliderToggle.checked == true) var t = parseFloat(slider.value) + d.getTimezoneOffset() / 60;
+  if (sliderToggle.checked == true)
+    var t = parseFloat(slider.value) + d.getTimezoneOffset() / 60;
   else var t = d.getTime() / 1000 / 60 / 60;
   var currBest = getBest(t);
   for ([key, item] of Object.entries(slots)) {
